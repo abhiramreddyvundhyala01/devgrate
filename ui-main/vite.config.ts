@@ -4,7 +4,9 @@ import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/devgrate/',
+  // For GitHub Pages: VITE_BASE_URL=/devgrate/ (set via GitHub Secrets)
+  // For Hostinger root domain: VITE_BASE_URL=/ (set in .env)
+  base: process.env.VITE_BASE_URL || '/devgrate/',
   plugins: [react()],
   resolve: {
     alias: {
