@@ -10,7 +10,7 @@ type Founder = {
 
 const founders: Founder[] = [
   {
-    name: 'Abhiramreddy',
+    name: 'Akshaya Reddy',
     role: 'CEO & Strategy',
     bio: 'Leads Devgrate\u2019s vision and business strategy, working closely with clients to identify where AI can create the most value for their operations.',
     photo: 'https://images.pexels.com/photos/26150470/pexels-photo-26150470.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',

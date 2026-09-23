@@ -1,16 +1,19 @@
-import { useState, type FormEvent } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { useState, useRef, type FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 import { Send, CheckCircle2, AlertCircle, Mail } from 'lucide-react';
 import { Reveal, WordReveal } from './Reveal';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase =
-  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+// ─── EmailJS Config ────────────────────────────────────────────────────────
+// Replace these with your actual EmailJS credentials after setup
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY';
+// ──────────────────────────────────────────────────────────────────────────
 
 type FormState = {
   name: string;
   email: string;
+  mobile: string;
   company: string;
   message: string;
 };
@@ -18,47 +21,47 @@ type FormState = {
 const initialState: FormState = {
   name: '',
   email: '',
+  mobile: '',
   company: '',
   message: '',
 };
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+    if (!form.name.trim() || !form.email.trim() || !form.mobile.trim() || !form.company.trim() || !form.message.trim()) return;
 
     setStatus('submitting');
     setErrorMsg('');
 
-    if (!supabase) {
-      setStatus('error');
-      setErrorMsg('Contact form is not configured yet. Please email us directly at hello@devgrate.com.');
-      return;
-    }
-
-    const { error } = await supabase.from('contact_submissions').insert({
-      name: form.name.trim(),
-      email: form.email.trim(),
-      company: form.company.trim() || null,
-      message: form.message.trim(),
-    });
-
-    if (error) {
-      setStatus('error');
-      setErrorMsg('Something went wrong. Please try again or email us directly.');
-    } else {
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
       setStatus('success');
       setForm(initialState);
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      setStatus('error');
+      setErrorMsg(
+        'Something went wrong sending your message. Please email us directly at info@devgrate.com'
+      );
     }
   };
 
-  const update = (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const update =
+    (field: keyof FormState) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   return (
     <section
@@ -112,14 +115,15 @@ export function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-medium text-stone-600 mb-2">
-                        Name
+                        Name <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="text"
+                        name="from_name"
                         required
                         value={form.name}
                         onChange={update('name')}
@@ -129,10 +133,11 @@ export function Contact() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-stone-600 mb-2">
-                        Email
+                        Email <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="email"
+                        name="from_email"
                         required
                         value={form.email}
                         onChange={update('email')}
@@ -141,31 +146,54 @@ export function Contact() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-600 mb-2">
-                      Company <span className="text-stone-400 font-normal">(optional)</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={form.company}
-                      onChange={update('company')}
-                      className="form-input w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 placeholder-stone-400"
-                      placeholder="Your company"
-                    />
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-sm font-medium text-stone-600 mb-2">
+                        Mobile Number <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        name="mobile"
+                        required
+                        value={form.mobile}
+                        onChange={update('mobile')}
+                        className="form-input w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 placeholder-stone-400"
+                        placeholder="+91 98765 43210"
+                        pattern="[+]?[0-9\s\-]{7,15}"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-stone-600 mb-2">
+                        Company <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        required
+                        value={form.company}
+                        onChange={update('company')}
+                        className="form-input w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 placeholder-stone-400"
+                        placeholder="Your company"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-stone-600 mb-2">
-                      Message
-                    </label>
+                        Message <span className="text-red-400">*</span>
+                      </label>
                     <textarea
                       required
                       rows={5}
+                      name="message"
                       value={form.message}
                       onChange={update('message')}
                       className="form-input w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200 text-stone-800 placeholder-stone-400 resize-none"
                       placeholder="Tell us about your business and what you're looking for..."
                     />
                   </div>
+
+                  {/* Hidden field to set the reply-to address */}
+                  <input type="hidden" name="to_email" value="info@devgrate.com" />
 
                   {status === 'error' && (
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-200">
@@ -198,7 +226,13 @@ export function Contact() {
               <div className="mt-8 pt-6 border-t border-stone-100 flex items-center justify-center gap-2 text-stone-400">
                 <Mail className="w-4 h-4" />
                 <span className="text-sm font-light">
-                  Prefer email? Reach us at hello@devgrate.com
+                  Prefer email? Reach us at{' '}
+                  <a
+                    href="mailto:info@devgrate.com"
+                    className="text-teal-600 hover:text-teal-700 transition-colors"
+                  >
+                    info@devgrate.com
+                  </a>
                 </span>
               </div>
             </div>
