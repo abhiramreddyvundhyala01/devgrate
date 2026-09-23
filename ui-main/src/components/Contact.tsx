@@ -191,8 +191,9 @@ export function Contact() {
                     />
                   </div>
 
-                  {/* Hidden field to set the reply-to address */}
+                  {/* Hidden fields for EmailJS template */}
                   <input type="hidden" name="to_email" value="info@devgrate.com" />
+                  <input type="hidden" name="title" value="New Website Enquiry" />
 
                   {status === 'error' && (
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-200">
