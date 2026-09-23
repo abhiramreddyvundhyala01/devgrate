@@ -122,7 +122,7 @@ export function Contact() {
                       </label>
                       <input
                         type="text"
-                        name="from_name"
+                        name="name"
                         required
                         value={form.name}
                         onChange={update('name')}
@@ -136,7 +136,7 @@ export function Contact() {
                       </label>
                       <input
                         type="email"
-                        name="from_email"
+                        name="email"
                         required
                         value={form.email}
                         onChange={update('email')}
