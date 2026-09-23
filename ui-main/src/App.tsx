@@ -10,7 +10,7 @@ import { Footer } from '@/components/Footer';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-[#faf9f7] text-stone-800 antialiased">
+    <div className="relative min-h-screen bg-[#faf9f7] text-stone-800 antialiased overflow-x-hidden">
       <Nav />
       <main>
         <Hero />
