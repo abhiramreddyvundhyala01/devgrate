@@ -4,10 +4,9 @@ import { Send, CheckCircle2, AlertCircle, Mail } from 'lucide-react';
 import { Reveal, WordReveal } from './Reveal';
 
 // ─── EmailJS Config ────────────────────────────────────────────────────────
-// Replace these with your actual EmailJS credentials after setup
-const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'service_f9zwkqf';
+const EMAILJS_TEMPLATE_ID = 'template_hpsgu1b';
+const EMAILJS_PUBLIC_KEY  = 'SoUTzY6MZTp8J5uIB';
 // ──────────────────────────────────────────────────────────────────────────
 
 type FormState = {
