@@ -43,7 +43,7 @@ export function Founders() {
   return (
     <section
       id="founders"
-      className="relative py-32 px-6"
+      className="relative py-20 md:py-32 px-4 sm:px-6"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-orange-400/40" />
 
@@ -60,7 +60,7 @@ export function Founders() {
               Meet the Founders
             </span>
           </Reveal>
-          <h2 className="font-display text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
             <WordReveal text="The team you'll actually" delay={100} />
             <br />
             <Reveal variant="soft" delay={500} as="span">

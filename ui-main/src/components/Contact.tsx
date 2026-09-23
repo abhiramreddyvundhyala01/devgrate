@@ -66,7 +66,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-32 px-6 bg-gradient-to-b from-transparent via-teal-50/30 to-stone-50/50"
+      className="relative py-20 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-transparent via-teal-50/30 to-stone-50/50"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-teal-400/40" />
 
@@ -77,7 +77,7 @@ export function Contact() {
               Contact
             </span>
           </Reveal>
-          <h2 className="font-display text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
             <WordReveal text="Let's talk about" delay={100} />
             <br />
             <Reveal variant="soft" delay={500} as="span">

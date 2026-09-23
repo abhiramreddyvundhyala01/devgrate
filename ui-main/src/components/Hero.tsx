@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 px-4 sm:px-6"
     >
       {/* Background gradient washes */}
       <div className="absolute inset-0 -z-10">
@@ -15,7 +15,7 @@ export function Hero() {
         <div className="absolute bottom-1/4 left-1/3 w-[350px] h-[350px] glow-blue rounded-full float-slow" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
         <Reveal variant="soft" delay={100}>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-sm border border-stone-200/80 text-sm font-medium text-stone-600 mb-8">
             <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
@@ -23,7 +23,7 @@ export function Hero() {
           </span>
         </Reveal>
 
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-stone-800 tracking-tight mb-6">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-stone-800 tracking-tight mb-6">
           <WordReveal text="AI that works while" delay={200} />
           <br />
           <Reveal variant="soft" delay={600} as="span">
@@ -56,7 +56,7 @@ export function Hero() {
           </div>
 
           {/* Trust bar */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-stone-400 font-light">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-stone-400 font-light">
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
               Built to scale

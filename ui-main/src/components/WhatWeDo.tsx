@@ -3,7 +3,7 @@ import { Reveal, WordReveal } from './Reveal';
 
 export function WhatWeDo() {
   return (
-    <section id="what-we-do" className="relative py-32 px-6">
+    <section id="what-we-do" className="relative py-20 md:py-32 px-4 sm:px-6">
       {/* Connecting gradient line from previous section */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-teal-400/40" />
 
@@ -14,7 +14,7 @@ export function WhatWeDo() {
               What We Do
             </span>
           </Reveal>
-          <h2 className="font-display text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
             <WordReveal text="Three ways we save" delay={100} />
             <br />
             <Reveal variant="soft" delay={500} as="span">
@@ -29,10 +29,10 @@ export function WhatWeDo() {
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* AI Automations */}
           <Reveal delay={100}>
-            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-10 border border-stone-200/60 shadow-sm h-full">
+            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-7 md:p-10 border border-stone-200/60 shadow-sm h-full">
               <div className="absolute top-6 right-6 w-28 h-28 glow-teal rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-6 shadow-md shadow-teal-200">
@@ -57,7 +57,7 @@ export function WhatWeDo() {
 
           {/* AI Customer Support */}
           <Reveal delay={250}>
-            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-10 border border-stone-200/60 shadow-sm h-full">
+            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-7 md:p-10 border border-stone-200/60 shadow-sm h-full">
               <div className="absolute top-6 right-6 w-28 h-28 glow-coral rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6 shadow-md shadow-orange-200">
@@ -82,7 +82,7 @@ export function WhatWeDo() {
 
           {/* Intelligent SaaS */}
           <Reveal delay={400}>
-            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-10 border border-stone-200/60 shadow-sm h-full">
+            <div className="product-card group relative bg-gradient-to-br from-white to-stone-50/80 rounded-3xl p-7 md:p-10 border border-stone-200/60 shadow-sm h-full">
               <div className="absolute top-6 right-6 w-28 h-28 glow-blue rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-6 shadow-md shadow-blue-200">

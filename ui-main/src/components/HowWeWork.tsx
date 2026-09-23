@@ -35,7 +35,7 @@ export function HowWeWork() {
   return (
     <section
       id="how-we-work"
-      className="relative py-32 px-6 bg-gradient-to-b from-transparent via-stone-50/50 to-transparent"
+      className="relative py-20 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-transparent via-stone-50/50 to-transparent"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-blue-400/40" />
 
@@ -46,7 +46,7 @@ export function HowWeWork() {
               How We Work
             </span>
           </Reveal>
-          <h2 className="font-display text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light text-stone-800 mt-4 leading-[1.15]">
             <WordReveal text="From business challenge to" delay={100} />
             <br />
             <Reveal variant="soft" delay={500} as="span">
@@ -65,7 +65,7 @@ export function HowWeWork() {
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
           {steps.map((step, i) => (
             <Reveal key={step.number} delay={i * 150}>
               <div className="product-card group relative bg-white rounded-3xl p-8 border border-stone-200/60 shadow-sm h-full overflow-hidden">
