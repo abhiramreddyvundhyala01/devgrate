@@ -11,28 +11,28 @@ type Founder = {
 const founders: Founder[] = [
   {
     name: 'Akshaya Reddy',
-    role: 'CEO & Strategy',
+    role: 'Founder & CEO | Technology & Innovation',
     bio: 'Leads Devgrate\u2019s vision and business strategy, working closely with clients to identify where AI can create the most value for their operations.',
     photo: 'https://images.pexels.com/photos/26150470/pexels-photo-26150470.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Portrait of a businessman in formal attire',
   },
   {
     name: 'Sumedha Repalle',
-    role: 'CTO & Engineering',
+    role: 'Founder & CEO | Business & Operations',
     bio: 'Oversees the technical architecture across all Devgrate products, ensuring every system is built to be reliable, scalable, and genuinely useful.',
     photo: 'https://images.pexels.com/photos/26150471/pexels-photo-26150471.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Portrait of a businessman in a black suit',
   },
   {
     name: 'Kavya Janapati',
-    role: 'Head of AI',
+    role: 'Founder & CEO | Strategy & Management',
     bio: 'Directs the AI and machine learning work behind Devgrate\u2019s products, from model selection to deployment, keeping outcomes practical and grounded.',
     photo: 'https://images.pexels.com/photos/34761515/pexels-photo-34761515.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Portrait of a professional woman in a gray blazer',
   },
   {
     name: 'Aparna Avanapu',
-    role: 'Head of Operations',
+    role: 'Founder & CEO | Technology & Product',
     bio: 'Manages day-to-day operations and client relationships, making sure projects move smoothly from initial conversation to working deployment.',
     photo: 'https://images.pexels.com/photos/33680700/pexels-photo-33680700.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     alt: 'Portrait of a professional woman with glasses',
