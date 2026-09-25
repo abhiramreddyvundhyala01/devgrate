@@ -18,14 +18,14 @@ const founders: Founder[] = [
   },
   {
     name: 'Sumedha Repalle',
-    role: 'Founder & CEO | Business & Operations',
+    role: 'Founder & CEO | Strategy & Management',
     bio: 'Oversees the technical architecture across all Devgrate products, ensuring every system is built to be reliable, scalable, and genuinely useful.',
     photo: '/sumedha.png',
     alt: 'Portrait of a businessman in a black suit',
   },
   {
     name: 'Kavya Janapati',
-    role: 'Founder & CEO | Strategy & Management',
+    role: 'Founder & CEO | Business & Operations',
     bio: 'Directs the AI and machine learning work behind Devgrate\u2019s products, from model selection to deployment, keeping outcomes practical and grounded.',
     photo: '/kavya.png',
     alt: 'Portrait of a professional woman in a gray blazer',
