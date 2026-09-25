@@ -1,1 +1,1 @@
-# Devgrate Landing Page
+# Devgrate — AI Automation & AI Solutions

@@ -20,7 +20,7 @@ const founders: Founder[] = [
     name: 'Sumedha Repalle',
     role: 'Founder & CEO | Strategy & Management',
     bio: 'Leads Devgrate\u2019s strategic direction and management, shaping business goals, planning growth initiatives, and ensuring the company stays aligned with its long-term vision.',
-    photo: '/sumedha.png',
+    photo: '/sumedha.png?v=2',
     alt: 'Portrait of a businessman in a black suit',
   },
   {
