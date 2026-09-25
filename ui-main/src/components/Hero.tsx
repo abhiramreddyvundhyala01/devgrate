@@ -42,13 +42,15 @@ export function Hero() {
         <Reveal variant="soft" delay={1700}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#contact"
+              href="/contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); window.history.replaceState(null, '', window.location.pathname); }}
               className="btn-primary px-8 py-3.5 rounded-full bg-gradient-to-r from-teal-600 to-blue-600 text-white font-medium text-base shadow-md"
             >
               Book a call
             </a>
             <a
-              href="#products"
+              href="/products"
+              onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); window.history.replaceState(null, '', window.location.pathname); }}
               className="px-8 py-3.5 rounded-full bg-white/70 backdrop-blur-sm border border-stone-200 text-stone-700 font-medium text-base hover:bg-white hover:border-stone-300 transition-all duration-300"
             >
               See what we build

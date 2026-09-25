@@ -1,5 +1,11 @@
 import { Sparkles } from 'lucide-react';
 
+function scrollTo(e: React.MouseEvent, id: string) {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  window.history.replaceState(null, '', window.location.pathname);
+}
+
 export function Footer() {
   return (
     <footer className="relative py-12 px-6 bg-stone-50/80 border-t border-stone-200/60">
@@ -15,10 +21,10 @@ export function Footer() {
           </div>
 
           <nav className="flex items-center gap-6">
-            <a href="#what-we-do" className="text-sm text-stone-500 hover:text-teal-600 transition-colors">What We Do</a>
-            <a href="#products" className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Products</a>
-            <a href="#founders" className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Founders</a>
-            <a href="#contact" className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Contact</a>
+            <a href="/what-we-do" onClick={(e) => scrollTo(e, 'what-we-do')} className="text-sm text-stone-500 hover:text-teal-600 transition-colors">What We Do</a>
+            <a href="/products" onClick={(e) => scrollTo(e, 'products')} className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Products</a>
+            <a href="/founders" onClick={(e) => scrollTo(e, 'founders')} className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Founders</a>
+            <a href="/contact" onClick={(e) => scrollTo(e, 'contact')} className="text-sm text-stone-500 hover:text-teal-600 transition-colors">Contact</a>
           </nav>
 
           <p className="text-sm text-stone-400 font-light">
@@ -29,3 +35,4 @@ export function Footer() {
     </footer>
   );
 }
+

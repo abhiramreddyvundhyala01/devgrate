@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Sparkles, Menu, X } from 'lucide-react';
+import { Sparkles, X } from 'lucide-react';
+
+function scrollTo(id: string) {
+  if (id === 'top') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+  // Keep URL clean — replace hash with bare path
+  window.history.replaceState(null, '', window.location.pathname);
+}
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,15 +35,19 @@ export function Nav() {
   }, [menuOpen]);
 
   const links = [
-    { label: 'What We Do', href: '#what-we-do' },
-    { label: 'Products', href: '#products' },
-    { label: 'Why Devgrate', href: '#why-devgrate' },
-    { label: 'How We Work', href: '#how-we-work' },
-    { label: 'Founders', href: '#founders' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'What We Do', target: 'what-we-do' },
+    { label: 'Products', target: 'products' },
+    { label: 'Why Devgrate', target: 'why-devgrate' },
+    { label: 'How We Work', target: 'how-we-work' },
+    { label: 'Founders', target: 'founders' },
+    { label: 'Contact', target: 'contact' },
   ];
 
-  const handleLinkClick = () => setMenuOpen(false);
+  const handleNavClick = (e: React.MouseEvent, target: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    scrollTo(target);
+  };
 
   return (
     <>
@@ -46,7 +60,7 @@ export function Nav() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#top" className="flex items-center gap-2 group" onClick={handleLinkClick}>
+          <a href="/" className="flex items-center gap-2 group" onClick={(e) => handleNavClick(e, 'top')}>
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center shadow-sm transition-transform group-hover:scale-105">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
@@ -59,8 +73,9 @@ export function Nav() {
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map((link) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.target}
+                href={`/${link.target}`}
+                onClick={(e) => handleNavClick(e, link.target)}
                 className="text-sm font-medium text-stone-600 hover:text-teal-600 transition-colors duration-300 whitespace-nowrap"
               >
                 {link.label}
@@ -70,7 +85,8 @@ export function Nav() {
 
           {/* Desktop CTA */}
           <a
-            href="#contact"
+            href="/contact"
+            onClick={(e) => handleNavClick(e, 'contact')}
             className="hidden md:inline-flex btn-primary text-sm font-medium px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-sm"
           >
             Get in touch
@@ -79,8 +95,8 @@ export function Nav() {
           {/* Mobile: hamburger + CTA */}
           <div className="flex md:hidden items-center gap-3">
             <a
-              href="#contact"
-              onClick={handleLinkClick}
+              href="/contact"
+              onClick={(e) => handleNavClick(e, 'contact')}
               className="btn-primary text-xs font-medium px-4 py-2 rounded-full bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-sm"
             >
               Get in touch
@@ -125,9 +141,9 @@ export function Nav() {
           <nav className="flex flex-col gap-1">
             {links.map((link, i) => (
               <a
-                key={link.href}
-                href={link.href}
-                onClick={handleLinkClick}
+                key={link.target}
+                href={`/${link.target}`}
+                onClick={(e) => handleNavClick(e, link.target)}
                 className="flex items-center justify-between py-4 border-b border-stone-100 last:border-0 text-base font-medium text-stone-700 hover:text-teal-600 transition-colors"
                 style={{ animationDelay: `${i * 50}ms` }}
               >
@@ -138,8 +154,8 @@ export function Nav() {
           </nav>
 
           <a
-            href="#contact"
-            onClick={handleLinkClick}
+            href="/contact"
+            onClick={(e) => handleNavClick(e, 'contact')}
             className="mt-6 w-full flex items-center justify-center btn-primary py-3.5 rounded-full bg-gradient-to-r from-teal-600 to-blue-600 text-white font-medium text-base shadow-md"
           >
             Get in touch
@@ -149,3 +165,4 @@ export function Nav() {
     </>
   );
 }
+
