@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
 import { WhatWeDo } from '@/components/WhatWeDo';
@@ -9,6 +10,21 @@ import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 
 function App() {
+  // Auto-scroll to section based on URL path (e.g. /founders → scroll to #founders)
+  useEffect(() => {
+    const path = window.location.pathname.replace('/', '');
+    if (path) {
+      // Small delay to ensure DOM is fully rendered
+      setTimeout(() => {
+        const el = document.getElementById(path);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState(null, '', '/');
+        }
+      }, 300);
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#faf9f7] text-stone-800 antialiased overflow-x-hidden">
       <Nav />
