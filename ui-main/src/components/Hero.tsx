@@ -1,4 +1,3 @@
-import { ArrowDown } from 'lucide-react';
 import { WordReveal, Reveal } from './Reveal';
 
 export function Hero() {
@@ -75,12 +74,7 @@ export function Hero() {
         </Reveal>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-stone-400 font-medium tracking-wider uppercase">
-          Scroll
-        </span>
-        <ArrowDown className="w-4 h-4 text-stone-400 scroll-indicator-dot" />
-      </div>
+
     </section>
   );
 }
